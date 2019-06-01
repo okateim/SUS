@@ -9,3 +9,7 @@ $ ./a.out abacbabcabca
       |----||-------|
 $ 
 ```
+
+```
+ g++ main.cpp -o main -O3 rmqrmmBP.a -ldivsufsort
+```
