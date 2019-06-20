@@ -15,7 +15,8 @@ int main (int argc, char * argv[]) {
   print_MUS_intervals(kMUS);
 
   int m = kMUS.size();
-  printf("number of MUSs: %d\n", m);
+  if (k == 0) printf("number of MUSs: %d\n", m);
+  else printf("number of %d-MUSs: %d\n", k, m);
   return 0;
 }
 
