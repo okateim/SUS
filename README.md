@@ -1,4 +1,6 @@
-# SUS
+# MUS & SUS
+
+## MUS の表示
 
 ```
 $ make main
@@ -15,6 +17,8 @@ number of MUSs: 5
 3
 ```
 
+## MUS および LS, SS の表示
+
 ```
 $ make SS
 $ ./SS abacbabcabca
@@ -29,9 +33,11 @@ Shortest occ \leq 2 Suffix (SS):
                               |----|
 ```
 
+## k-mismatch MUS の表示
+
 ```
 $ make kmis
-$ ./kmis abacbabcabca 2
+$ ./kmis abacbabcabca 2    # ./kmis (string) (number of mismatchs permitted)
  1  2  3  4  5  6  7  8  9 10 11 12 
  a  b  a  c  b  a  b  c  a  b  c  a 
 |----------------|
@@ -39,9 +45,11 @@ $ ./kmis abacbabcabca 2
 number of 2-MUSs: 2
 ```
 
+## スライド窓内の MUS の表示
+
 ```
 $ make slide
-$ ./slide abacbabcabca 4
+$ ./slide abacbabcabca 4    # ./slide (string) (width of window)
  1  2  3  4  5  6  7  8  9 10 11 12 
  a  b  a  c  b  a  b  c  a  b  c  a 
 [ 2,  2]  1 
@@ -55,6 +63,10 @@ $ ./slide abacbabcabca 4
 [10, 10]  8  9 
 [11, 11]  9 
 ```
+下部の表示の意味：
+(MUS区間) (その区間が MUS となるスライド窓の開始位置の列)
+
+## MUS および SUS の表示（対話式）
 
 ```
 $ make SUS
@@ -72,11 +84,4 @@ query position: 11
 SUSs for position 11: [ 8, 11] 
                      |----------|
 query position: q
-```
-
-
-# misc memo
-
-```
- g++ main.cpp -o main -O3 rmqrmmBP.a -ldivsufsort
 ```
