@@ -13,7 +13,7 @@ int main (int argc, char * argv[]) {
   int * MUSlen = new int[m];
   for (int i = 0; i < m; i++) {
       MUSlen[i] = MUS[i].second - MUS[i].first + 1;
-      printf("%d\n", MUSlen[i]);
+//      printf("%d\n", MUSlen[i]);
   }
 
   delete [] MUSlen;
