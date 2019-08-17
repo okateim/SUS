@@ -1,3 +1,0 @@
-$ gcc -o divsufsort.o -c divsufsort.c
-$ g++ -o main.o -c main.cpp
-$ g++ divsufsort.o main.o
