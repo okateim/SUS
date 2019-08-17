@@ -1,5 +1,8 @@
 # MUS & SUS
 
+MUS および SUS の定義は以下の記事を参照のこと  
+https://qiita.com/okateim/items/74f207d81b71f5ad8ed9
+
 ## MUS の表示
 
 ```
@@ -10,12 +13,29 @@ $ ./main abacbabcabca
 |-------||----|      |-------|
       |----||-------|
 number of MUSs: 5
-3
-2
-2
-3
-3
 ```
+
+## MUS および SUS の表示（対話式）
+
+```
+$ make SUS
+$ ./SUS 
+input string: abacbabcabca
+ 1  2  3  4  5  6  7  8  9 10 11 12 
+ a  b  a  c  b  a  b  c  a  b  c  a 
+|-------||----|      |-------|
+      |----||-------|
+query position: 4
+SUSs for position  4: [ 3,  4] [ 4,  5] 
+      |----|
+         |----|
+query position: 11
+SUSs for position 11: [ 8, 11] 
+                     |----------|
+query position: q
+```
+
+# その他
 
 ## MUS および LS, SS の表示
 
@@ -65,23 +85,3 @@ $ ./slide abacbabcabca 4    # ./slide (string) (width of window)
 ```
 下部の表示の意味：
 (MUS区間) (その区間が MUS となるスライド窓の開始位置の列)
-
-## MUS および SUS の表示（対話式）
-
-```
-$ make SUS
-$ ./SUS 
-input string: abacbabcabca
- 1  2  3  4  5  6  7  8  9 10 11 12 
- a  b  a  c  b  a  b  c  a  b  c  a 
-|-------||----|      |-------|
-      |----||-------|
-query position: 4
-SUSs for position  4: [ 3,  4] [ 4,  5] 
-      |----|
-         |----|
-query position: 11
-SUSs for position 11: [ 8, 11] 
-                     |----------|
-query position: q
-```
