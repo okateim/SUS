@@ -13,7 +13,7 @@ int main (int argc, char * argv[]) {
 
   int n = T.length();
   int b = MUS[m-1].first;
-  int e = MUS[m-1].second;
+//  int e = MUS[m-1].second;
   std::vector<std::pair<int, int> > LSinterval;
   LSinterval.push_back(std::make_pair(b+1, n-1));
   printf("Longest Repeating Suffix (LS): \n");
