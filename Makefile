@@ -1,4 +1,4 @@
-all: main kmis SUS SS slide
+all: main kmis SUS intervalSUS SS slide
 
 clean:
 	rm -f *.o main kmis SUS SS slide
