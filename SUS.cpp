@@ -20,8 +20,8 @@ int main (int argc, char * argv[]) {
   for (int i = 0; i < n; i++) {
     if (j == m-1 && MUS[j].second <= i) {
       pred_on_MUSend[i] = j;
-    } else if (MUS[j+1].second == i) {
-      pred_on_MUSend[i] = j+1;
+    } else if (MUS[j].second == i) {
+      pred_on_MUSend[i] = j;
       j++;
     } else if (MUS[j].second > i) {
       pred_on_MUSend[i] = NIL;
@@ -53,7 +53,7 @@ int main (int argc, char * argv[]) {
     int MIN = n+1;
     int ans_mus_index = 0;
     for (int i = left_mus_index; i <= right_mus_index; i++) {
-      int len = cover_length(MUS[i].first, MUS[i].second, p);
+      int len = cover_length(MUS[i].first, MUS[i].second, p, p);
       if (len < MIN) {
         MIN = len;
         ans_mus_index = i;
@@ -62,9 +62,9 @@ int main (int argc, char * argv[]) {
     printf("SUSs for position %2d: ", p+1);
     std::vector<std::pair<int, int> > SUS;
     for (int i = left_mus_index; i <= right_mus_index; i++) {
-      int len = cover_length(MUS[i].first, MUS[i].second, p);
+      int len = cover_length(MUS[i].first, MUS[i].second, p, p);
       if (len == MIN) {
-        std::pair<int, int> sus = cover(MUS[i].first, MUS[i].second, p);
+        std::pair<int, int> sus = cover(MUS[i].first, MUS[i].second, p, p);
         SUS.push_back(sus);
         printf("[%2d, %2d] ", sus.first+1, sus.second+1);
       }

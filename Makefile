@@ -18,6 +18,12 @@ SUS: lib/divsufsort.c SUS.cpp
 	g++ -Wall -o SUS.o -c -I./lib SUS.cpp
 	g++ -Wall -o SUS divsufsort.o SUS.o
 
+intervalSUS: lib/divsufsort.c lib/rmq.c intervalSUS.cpp
+	gcc -Wall -o ./divsufsort.o -c ./lib/divsufsort.c
+	gcc -Wall -o ./rmq.o -c ./lib/rmq.c
+	g++ -Wall -o intervalSUS.o -c -I./lib -DUSERMQ intervalSUS.cpp
+	g++ -Wall -o intervalSUS divsufsort.o rmq.o intervalSUS.o
+
 SS: lib/divsufsort.c SS.cpp
 	gcc -Wall -o ./divsufsort.o -c ./lib/divsufsort.c
 	g++ -Wall -o SS.o -c -I./lib SS.cpp

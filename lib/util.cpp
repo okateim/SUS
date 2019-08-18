@@ -2,17 +2,20 @@
 #include <vector>
 #include "MUS.cpp"
 
-std::pair<int, int> cover(int i, int j, int k) {
+#if defined(USERMQ)
+#include "rmq.h"
+#endif
+
+std::pair<int, int> cover(int i, int j, int k, int l) {
   int x = std::min(i, k);
-  int y = std::max(j, k);
+  int y = std::max(j, l);
   std::pair<int, int> p = std::make_pair(x, y);
   return p;
 }
 
-int cover_length(int i, int j, int k) {
-  int x = std::min(i, k);
-  int y = std::max(j, k);
-  return y - x + 1;
+int cover_length(int i, int j, int k, int l) {
+  std::pair<int, int> p = cover(i, j, k, l);
+  return p.second - p.first + 1;
 }
 
 void print_intervals(std::vector<std::pair<int, int> > MUS) {
@@ -65,3 +68,15 @@ void print_string (std::string T) {
   printf("\n");
   return;
 }
+
+#if defined(USERMQ)
+void find_leq(VAL * A, rmqinfo * ri, int left, int right, int threshold, std::vector<int>& indcies) {
+  if (left > right) return;
+  int idx = rm_query(ri, left, right);
+  if (A[idx] > threshold) return;
+  indcies.push_back(idx);
+  find_leq(A, ri, left, idx-1, threshold, indcies);
+  find_leq(A, ri, idx+1, right, threshold, indcies);
+  return;
+}
+#endif
